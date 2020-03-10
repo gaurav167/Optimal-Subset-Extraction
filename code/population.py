@@ -18,11 +18,13 @@ class Population:
 	def size(self):
 		return len(self.population_array)
 
-	def getBestIndivisual(self):
-		return self.best_indivisual
+	def getBestIndivisualFitness(self):
+		return self.best_indivisual.getFitness()
+
+	def getBestIndivisualVocabulary(self):
+		return self.best_indivisual.getVocabulary()
 
 	def evolve(self):
-		self.best_indivisual = None
 		parents = self._parentSelection()
 		for i in range(0, len(parents), 2):
 			rnd = random.randint(0, 99)
@@ -30,8 +32,7 @@ class Population:
 				parents[i], parents[i+1] = self._crossover(parents[i], parents[i+1])
 		for i in range(len(parents)):
 			parents[i] = self._mutate(parents[i])
-			if self.best_indivisual == None or parents[i].getFitness() > self.best_indivisual.getFitness():
-				self.best_indivisual = parents[i]
+		self.best_indivisual = max(self.population_array, key=lambda indivisual: indivisual.getFitness())
 		self.population_array = parents
 
 	def _parentSelection(self):

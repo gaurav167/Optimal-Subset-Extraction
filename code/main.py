@@ -11,16 +11,17 @@ import CONSTANTS
 
 
 def run(population, epochs):
+	print("Initial fitness :", population.getBestIndivisualFitness())
 	GENERATION = 1
-	best_indivisual = population.getBestIndivisual()
+	best_indivisual_fitness = population.getBestIndivisualFitness()
 	while GENERATION <= epochs:
-		print("Running epoch number :", GENERATION)
 		population.evolve()
-		if population.getBestIndivisual().getFitness() > best_indivisual.getFitness():
-			best_indivisual = population.getBestIndivisual()
-		print("Generation", GENERATION, "Fitness :", population.getBestIndivisual().getFitness())
+		if population.getBestIndivisualFitness() > best_indivisual_fitness:
+			best_indivisual_fitness = population.getBestIndivisualFitness()
+		print("Generation", GENERATION, "Fitness :", population.getBestIndivisualFitness())
 		GENERATION += 1
-	print("Best Indivisual Fitness :", best_indivisual.getFitness())
+	print("Best Indivisual Fitness :", best_indivisual_fitness)
+
 
 train_data, test_data = DataLoader(CONSTANTS.SAMPLE_DATA_DIR).load()
 # train_data, test_data = DataLoader(CONSTANTS.FULL_DATA_DIR).load()

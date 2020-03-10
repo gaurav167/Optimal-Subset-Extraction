@@ -14,7 +14,7 @@ class Indivisual:
 		return self.fitness
 
 	def getVocabulary(self):
-		return self.vocabulary
+		return self.vocabulary.copy()
 
 	def setVocabulary(self, vocabulary):
 		self.vocabulary = vocabulary
