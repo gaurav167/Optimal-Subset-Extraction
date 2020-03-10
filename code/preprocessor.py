@@ -12,7 +12,7 @@ class Preprocessor():
 	
 	notalnum = re.compile('[\W_]+', re.UNICODE)
 	stop_words = set(stopwords.words('english'))
-	stop_words.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}', '', '\n'])
+	stop_words.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}', '', '\n', 'br'])
 	porter_stemmer = PorterStemmer()
 
 	def preprocess(self, df, stemming=False):
