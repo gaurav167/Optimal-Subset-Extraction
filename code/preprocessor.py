@@ -26,7 +26,8 @@ class Preprocessor():
 		clean_words = []
 		for word in words:
 			word = wordpunct_tokenize(word.lower())
-			word = [unidecode.unidecode(Preprocessor.notalnum.sub('' , word)) for word in word if not word.isdigit() and word not in Preprocessor.stop_words]
+			word = [unidecode.unidecode(Preprocessor.notalnum.sub('' , word)) 
+				for word in word if not word.isdigit() and word not in Preprocessor.stop_words]
 			clean_words += list(filter(None, word))
 		clean_words = ' '.join(clean_words)
 		return clean_words
